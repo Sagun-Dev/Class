@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include<stdlib.h>
 #include<string.h>
 void is_present(char word[],char guess,char guess_word[]);
 int has_won(int length,char guess_word[]);
@@ -7,8 +8,13 @@ int warning_Remaining(char word[],char guess);
 void available_chars(char all_Guess[] ,char alphabets[]);
 int main()
 {
-    char random_word[20]="apple",user_Guess[20]={},current_Guess,all_guess[20]={},alphabets_rem[]="abcdefghijklmnopqrstuvwxyz";
+    srand(time());
+    char random_word_list[10][20]={"apple","application","output","general","message","test","result","compile","debugger","console"};
+
+    char random_word[20],user_Guess[20]={},current_Guess,all_guess[20]={},alphabets_rem[]="abcdefghijklmnopqrstuvwxyz";
+ strcpy(random_word,random_word_list[rand()%10]);
     int word_length=strlen(random_word),chances=6,warnings=3,counter=0;
+    printf("length of the word is: %d\n",word_length);
     for(int i=0;i<word_length;i++){
         user_Guess[i]='_';
     }
